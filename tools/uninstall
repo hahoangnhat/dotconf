@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Exit on ERROR
+set -e
+
+CONFIG="conf.yaml"
+BASE_DIR="$(cd $(dirname "$0") && pwd)"
+DOTCONF="dotconf"
+
+cd "$BASE_DIR"
+git -C "${DOTCONF}" submodule sync --quiet --recursive
+git submodule update --init --recursive "$DOTCONF"
+
+"$BASE_DIF/$DOTCONF/bin/dotconf" -d "$BASE_DIR" -c "$CONFIG" -a "uninstall" "$@"

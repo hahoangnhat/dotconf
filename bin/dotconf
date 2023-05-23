@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# This scripts works as both a Shell script and a Python script
+# depending on how it was executed.
+
+# Shell script
+''':'
+command -v python  > /dev/null 2>&1 && exec python "$0" "$@"
+command -v python2 > /dev/null 2>&1 && exec python2 "$0" "$@"
+command -v python3 > /dev/null 2>&1 && exec python3 "$0" "$@"
+>&2 echo "ERROR: Cannot find Python"
+exit 1
+'''
+
+# Python script
+import sys, os
+
+DOTCONF_PROJECT_DIRECTORY = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+
+# Add libraries, DOTCONF_PROJECT_DIRECTORY to env
+PYYAML_DIRECTORY = os.path.join(DOTCONF_PROJECT_DIRECTORY, "libs/pyyaml/lib")
+if PYYAML_DIRECTORY not in sys.path:
+    sys.path.insert(0, PYYAML_DIRECTORY)
+
+PYTEST_DIRECTORY = os.path.join(DOTCONF_PROJECT_DIRECTORY, "libs/pytest")
+if PYTEST_DIRECTORY not in sys.path:
+    sys.path.insert(0, PYTEST_DIRECTORY)
+
+if DOTCONF_PROJECT_DIRECTORY not in sys.path:
+    sys.path.insert(0, DOTCONF_PROJECT_DIRECTORY)
+
+import cli
+
+def main():
+    cli.main()
+
+if __name__ == '__main__':
+    main()
