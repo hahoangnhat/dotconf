@@ -11,4 +11,4 @@ cd "$BASE_DIR"
 git -C "${DOTCONF}" submodule sync --quiet --recursive
 git submodule update --init --recursive "$DOTCONF"
 
-"$BASE_DIR/$DOTCONF/bin/dotconf" -d "$BASE_DIR" -c "$CONFIG" -a "uninstall" "$@"
+"$BASE_DIR/$DOTCONF/bin/dotconf" -d "$BASE_DIR" -c "$BASE_DIR/$CONFIG" -a "uninstall" "$@"
