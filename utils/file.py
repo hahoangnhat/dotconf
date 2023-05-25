@@ -13,4 +13,4 @@ def load(filepath):
         data = yaml.safe_load(file)
         if len(data) == 0:
             raise RuntimeError("Configuration file is empty")
-        return reduce(lambda x, y: {**x, **y}, data)
+        return data
