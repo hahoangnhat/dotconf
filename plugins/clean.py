@@ -20,3 +20,4 @@ def remove_dead_links(folder):
             ):
                 os.remove(file_full_path)
                 logging.info(f"Remove dead file symbolic link: {file_full_path}")
+        logging.info("Clean done!")

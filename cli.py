@@ -6,9 +6,7 @@ from plugins import link, clean
 
 
 def add_options(parser):
-    parser.add_argument(
-        "-d", "--directory", help="Dotfile's base directory"
-    )
+    parser.add_argument("-d", "--directory", help="Dotfile's base directory")
     parser.add_argument("-c", "--config", help="Configuration filepath")
     parser.add_argument("-a", "--action", help="Action")
 
