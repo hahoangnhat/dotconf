@@ -45,7 +45,7 @@ def create_links(links):
         # Overwrite links
         try:
             if os.path.exists(os.readlink(symlink)):
-                if os.environ.get("OVERWRITE") == "true" or (
+                if os.environ.get("OVERWRITE").lower() == "true" or (
                     isinstance(source, dict) and source["overwrite"]
                 ):
                     os.unlink(symlink)
