@@ -1,5 +1,4 @@
 import os
-import logging
 from argparse import ArgumentParser, RawTextHelpFormatter
 from utils import file
 from plugins import link, clean
@@ -41,7 +40,7 @@ def main():
         match args.action:
             case "install":
                 link.create_links(links)
-                logging.warning("Setup done")
+                print("Setup done")
             case "uninstall":
                 link.remove_links(links)
-                logging.warning("Uninstall done")
+                print("Uninstall done")

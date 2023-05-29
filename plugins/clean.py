@@ -1,5 +1,4 @@
 import os
-import logging
 
 
 def remove_dead_links(folder):
@@ -11,7 +10,7 @@ def remove_dead_links(folder):
                 os.readlink(dir_full_path)
             ):
                 os.rmdir(dir_full_path)
-                logging.warning(f"Remove dead folder symbolic link: {dir_full_path}")
+                print(f"Remove dead folder symbolic link: {dir_full_path}")
 
         for filename in filenames:
             file_full_path = os.path.join(dirpath, filename)
@@ -19,5 +18,5 @@ def remove_dead_links(folder):
                 os.readlink(file_full_path)
             ):
                 os.remove(file_full_path)
-                logging.warning(f"Remove dead file symbolic link: {file_full_path}")
-        logging.warning("Clean done!")
+                print(f"Remove dead file symbolic link: {file_full_path}")
+        print("Clean done!")
