@@ -41,7 +41,7 @@ def main():
         match args.action:
             case "install":
                 link.create_links(links)
-                logging.info("Setup done")
+                logging.warning("Setup done")
             case "uninstall":
                 link.remove_links(links)
-                logging.info("Uninstall done")
+                logging.warning("Uninstall done")
