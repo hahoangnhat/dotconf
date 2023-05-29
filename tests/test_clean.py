@@ -1,5 +1,4 @@
 import os
-import logging
 from plugins import clean
 
 DOTCONF_PROJECT_DIRECTORY = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
@@ -12,7 +11,7 @@ def have_dead_links(folder):
             if os.path.islink(dir_full_path) and not os.path.exists(
                 os.readlink(dir_full_path)
             ):
-                logging.warn(f"Directory: {dir_full_path}")
+                print(f"Directory: {dir_full_path}")
                 return False
 
         for filename in filenames:
@@ -20,7 +19,7 @@ def have_dead_links(folder):
             if os.path.islink(file_full_path) and not os.path.exists(
                 os.readlink(file_full_path)
             ):
-                logging.warn(f"File: {file_full_path}")
+                print(f"File: {file_full_path}")
                 return False
     return True
 
