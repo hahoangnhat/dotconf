@@ -1,7 +1,7 @@
 import os
 from utils import logging
 
-logger = logging.logger
+logger = logging.getLogger("dotconf")
 
 
 def create_links(links):

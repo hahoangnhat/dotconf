@@ -2,7 +2,7 @@ import os
 from plugins import clean
 from utils import logging
 
-logger = logging.logger
+logger = logging.getLogger("dotconf")
 
 DOTCONF_PROJECT_DIRECTORY = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
