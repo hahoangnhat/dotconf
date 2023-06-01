@@ -3,7 +3,7 @@ import yaml
 import logging
 from functools import reduce
 
-logger = logging.logger
+logger = logging.getLogger("dotconf")
 
 
 def load(filepath):

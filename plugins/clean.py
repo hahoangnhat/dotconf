@@ -1,7 +1,7 @@
 import os
 from utils import logging
 
-logger = logging.logger
+logger = logging.getLogger("dotconf")
 
 
 def remove_dead_links(folder):

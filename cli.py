@@ -3,7 +3,7 @@ from argparse import ArgumentParser, RawTextHelpFormatter
 from utils import file, logging
 from plugins import link, clean
 
-logger = logging.logger
+logger = logging.getLogger("dotconf")
 
 
 def add_options(parser):
