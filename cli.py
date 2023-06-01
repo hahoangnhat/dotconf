@@ -1,7 +1,9 @@
 import os
 from argparse import ArgumentParser, RawTextHelpFormatter
-from utils import file
+from utils import file, logging
 from plugins import link, clean
+
+logger = logging.logger
 
 
 def add_options(parser):
@@ -40,7 +42,7 @@ def main():
         match args.action:
             case "install":
                 link.create_links(links)
-                print("Setup done")
+                logger.info("Setup done!")
             case "uninstall":
                 link.remove_links(links)
-                print("Uninstall done")
+                logger.info("Uninstall done!")

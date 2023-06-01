@@ -1,4 +1,7 @@
 import os
+from utils import logging
+
+logger = logging.logger
 
 
 def create_links(links):
@@ -26,7 +29,7 @@ def create_links(links):
                 if not os.path.exists(source):
                     # Only filename
                     if not os.path.exists(os.path.join(BASE_DIRECTORY, source)):
-                        print(f"Source path not exist: {source}")
+                        logger.info(f"Source path not exist: {source}")
                         continue
                     else:
                         source = os.path.join(BASE_DIRECTORY, source)
@@ -36,7 +39,7 @@ def create_links(links):
                 if not os.path.exists(source["path"]):
                     # Only filename
                     if not os.path.exists(os.path.join(BASE_DIRECTORY, source["path"])):
-                        print(f"Source path not exist: {source}")
+                        logger.info(f"Source path not exist: {source}")
                         continue
                     else:
                         source["path"] = os.path.join(BASE_DIRECTORY, source["path"])
@@ -49,20 +52,20 @@ def create_links(links):
                 ):
                     os.unlink(symlink)
         except:
-            print(f"Cannot overwrite symlink: {symlink}")
+            logger.warning(f"Cannot overwrite symlink: {symlink}")
 
         # Create symbolic links
         create_parent_folder(symlink)
         if isinstance(source, str):
             os.symlink(source, symlink, target_is_directory=os.path.isdir(source))
-            print(f"Create symbolic link: {symlink} -> {source}")
+            logger.info(f"Create symbolic link: {symlink} -> {source}")
         elif isinstance(source, dict):
             os.symlink(
                 source["path"],
                 symlink,
                 target_is_directory=os.path.isdir(source["path"]),
             )
-            print(f'Create symbolic link: {symlink} -> {source["path"]}')
+            logger.info(f'Create symbolic link: {symlink} -> {source["path"]}')
 
 
 def remove_links(links):
@@ -70,7 +73,7 @@ def remove_links(links):
     for symlink, source in links.items():
         if os.path.islink(os.path.expanduser(symlink)):
             os.unlink(os.path.expanduser(symlink))
-            print(f"Remove symbolic link: {symlink}")
+            logger.info(f"Remove symbolic link: {symlink}")
 
 
 def create_parent_folder(symlink):
