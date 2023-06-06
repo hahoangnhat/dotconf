@@ -65,6 +65,19 @@ links:
 In this example, the **path** property specifies the target path for the symbolic link, which can be a file or a folder.
 The **overwrite** property is optional and set to True, enabling the overwrite of existing links if necessary.
 
+**Clean**
+The **clean** task in Dotconf helps you remove dead symbolic links in a directory and its subdirectories. You can specify an array of directory paths that you want to clean up, and Dotconf will take care of it. Here's an example:
+```yaml
+clean: ['/etc', '/usr/local']
+```
+
+Equivalent to:
+```yaml
+clean:
+  - '/etc'
+  - '/usr/local'
+```
+
 ## Inspiration
 Dotconf owes a profound debt of gratitude to the author and contributors of [Dotbot][dotconf], whose brilliant work has been a constant source of inspiration and has greatly influenced the development of this tool. I sincerely appreciate their invaluable contributions and unwavering dedication to the field.
 
