@@ -1,7 +1,8 @@
 # Dotconf
 Dotconf is designed to be lightweight with no dependencies installation required. It provides a simple way to bootstrap your dotfiles repository, assuming that you already have one in place.
 
----
+> **Note:** Please note that the file README.md is still being edited and may undergo further changes.
+
 ## Required
 As Dotconf is written in Python, the only requirement for using it is to have Python 3.11 installed.
 
@@ -31,7 +32,7 @@ In this example, Dotconf defines two tasks: **clean** and **links**. The **defau
 
 ### Configuration
 
-**Links**
+**1. Links**
 
 The **links** task in Dotconf specifies a list of symbolic links to be created. Each link is defined with the link's path as the key and the target path as the value. Here's an example:
 ```yaml
@@ -65,7 +66,8 @@ links:
 In this example, the **path** property specifies the target path for the symbolic link, which can be a file or a folder.
 The **overwrite** property is optional and set to True, enabling the overwrite of existing links if necessary.
 
-**Clean**
+**2. Clean**
+
 The **clean** task in Dotconf helps you remove dead symbolic links in a directory and its subdirectories. You can specify an array of directory paths that you want to clean up, and Dotconf will take care of it. Here's an example:
 ```yaml
 clean: ['/etc', '/usr/local']
@@ -77,6 +79,10 @@ clean:
   - '/etc'
   - '/usr/local'
 ```
+
+**3. Default**
+
+The **default** section allows you to define default properties for the **links** task in the present configuration. Currently, it only includes the **overwrite** property, which is set to true for all links. This default property works similarly to the **overwrite** property in each individual link defined in the **links** task. It enables the overwriting of existing links if necessary.
 
 ## Inspiration
 Dotconf owes a profound debt of gratitude to the author and contributors of [Dotbot][dotconf], whose brilliant work has been a constant source of inspiration and has greatly influenced the development of this tool. I sincerely appreciate their invaluable contributions and unwavering dedication to the field.
