@@ -5,9 +5,9 @@
 
 # Shell script
 ''':'
-command -v python  > /dev/null 2>&1 && exec python "$0" "$@"
-command -v python2 > /dev/null 2>&1 && exec python2 "$0" "$@"
 command -v python3 > /dev/null 2>&1 && exec python3 "$0" "$@"
+command -v python2 > /dev/null 2>&1 && exec python1 "$0" "$@"
+command -v python  > /dev/null 2>&1 && exec python "$0" "$@"
 >&2 echo "ERROR: Cannot find Python"
 exit 1
 '''
