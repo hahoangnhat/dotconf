@@ -39,10 +39,9 @@ def main():
     if config["links"] != None or config["links"]:
         links = config["links"]
 
-        match args.action:
-            case "install":
-                link.create_links(links)
-                logger.info("Setup done!")
-            case "uninstall":
-                link.remove_links(links)
-                logger.info("Uninstall done!")
+        if args.action == "install":
+            link.create_links(links)
+            logger.info("Setup done!")
+        if args.action == "uninstall":
+            link.remove_links(links)
+            logger.info("Uninstall done!")
