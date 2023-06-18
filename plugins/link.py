@@ -1,4 +1,5 @@
 import os
+import shutil
 from utils import logging
 
 logger = logging.getLogger("dotconf")
@@ -51,6 +52,14 @@ def create_links(links):
                     isinstance(source, dict) and source["overwrite"]
                 ):
                     os.unlink(symlink)
+            elif os.path.exists(symlink):
+                if os.environ.get("OVERWRITE").lower() == "true" or (
+                    isinstance(source, dict) and source["overwrite"]
+                ):
+                    if os.path.isfile(symlink):
+                        os.remove(symlink)
+                    elif os.path.isdir(symlink):
+                        shutil.rmtree(symlink)
         except:
             logger.warning(f"Cannot overwrite symlink: {symlink}")
 
